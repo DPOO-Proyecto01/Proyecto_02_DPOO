@@ -46,6 +46,12 @@ public class Cliente extends Usuario
 
 	public void setPiezasCompradas(ArrayList<Pieza> piezasCompradas) {
 		this.piezasCompradas = piezasCompradas;
+		
+	}
+	
+	public void añadirPiezaComprada(Pieza pieza)
+	{
+		this.piezasCompradas.add(pieza);
 	}
 
 }

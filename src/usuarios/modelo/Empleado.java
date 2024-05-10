@@ -10,5 +10,12 @@ public abstract class Empleado extends Usuario
 		
 		// TODO Auto-generated constructor stub
 	}
+	
+	/**
+	 * @return the rol
+	 */
+	public String getRol() {
+		return rol;
+	}
 
 }
