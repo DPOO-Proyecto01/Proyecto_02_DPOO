@@ -6,16 +6,16 @@ public class Cliente extends Usuario
 {
 	
 	private static String CLIENTE = "Cliente";
-	private static int TELEFONO;
-	private static String EMAIL;
+	private int telefono;
+	private String email;
 	private double monto;
 	private ArrayList<Pieza> piezasCompradas;
 	
 	public Cliente(String _nombre, String _contrasenia, String _tipo, int telefono, String email, Integer _Id) {
 		super(_nombre, _contrasenia, _tipo = "Cliente", _Id = AdministradorUsuarios.crearID());
 		
-		Cliente.TELEFONO = telefono;
-		Cliente.EMAIL = email;
+		this.telefono = telefono;
+		this.email = email;
 		this.monto = 0;
 		this.piezasCompradas = new ArrayList<Pieza>();
 	}
@@ -25,11 +25,11 @@ public class Cliente extends Usuario
 	}
 
 	public int getTELEFONO() {
-		return TELEFONO;
+		return telefono;
 	}
 
 	public String getEMAIL() {
-		return EMAIL;
+		return email;
 	}
 
 	public double getMonto() {

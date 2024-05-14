@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -84,7 +85,15 @@ public class PersistenciaProcesos
 			JSONObject jSubasta = new JSONObject( );
             jSubasta.put( "Pieza", subasta.getPieza() );
             jSubasta.put( "PrecioFinal", subasta.getPrecioFinal());
-            jSubasta.put( "Ofertas", subasta.getOfertas() );
+            
+            JSONArray jOfertas = new JSONArray( );
+			List<String> ofertas = subasta.getOfertas();
+			for (String oferta : ofertas) 
+			{
+				jOfertas.put (oferta);
+			}
+            jSubasta.put( "Ofertas", jOfertas );
+            
             jSubasta.put( "Terminada", subasta.isTerminada() );
             jSubasta.put( "Fecha", subasta.getFecha() );
             jSubasta.put( "Empleado", subasta.getEmpleado());
@@ -103,7 +112,15 @@ public class PersistenciaProcesos
             JSONObject jSubasta = new JSONObject( );
             jSubasta.put( "Pieza", subasta.getPieza() );
             jSubasta.put( "PrecioFinal", subasta.getPrecioFinal());
-            jSubasta.put( "Ofertas", subasta.getOfertas() );
+            
+            JSONArray jOfertas = new JSONArray( );
+			List<String> ofertas = subasta.getOfertas();
+			for (String oferta : ofertas) 
+			{
+				jOfertas.put (oferta);
+			}
+            jSubasta.put( "Ofertas", jOfertas );
+            
             jSubasta.put( "Terminada", subasta.isTerminada() );
             jSubasta.put( "Fecha", subasta.getFecha() );
             jSubasta.put( "Empleado", subasta.getEmpleado());
@@ -143,17 +160,19 @@ public class PersistenciaProcesos
         	
         	Pieza pieza = (Pieza) subasta.get("Pieza");
         	double precioFinal = subasta.getDouble("PrecioFinal");
-        	@SuppressWarnings("unchecked")
-			List<String> ofertas = (List<String>) subasta.get("Ofertas");
         	String fecha = subasta.getString("Fecha");
         	Empleado empleado = (Empleado) subasta.get("Empleado");
         	Administrador admin = (Administrador) subasta.get("Administrador");
         	
         	Subasta Subasta = new Subasta(pieza, precioFinal, fecha, empleado, admin);
-        	for (String oferta : ofertas) 
+        	
+        	JSONArray ofertas = (JSONArray) subasta.get("Ofertas");
+        	for (Object jOferta : ofertas) 
         	{
+        		String oferta = (String) jOferta;
         		Subasta.añadirOferta(oferta);
         	}
+        	
             adminp.añadirSubasta(Subasta);
         }
 	}
@@ -167,18 +186,21 @@ public class PersistenciaProcesos
         	
         	Pieza pieza = (Pieza) subasta.get("Pieza");
         	double precioFinal = subasta.getDouble("PrecioFinal");
-        	@SuppressWarnings("unchecked")
-			List<String> ofertas = (List<String>) subasta.get("Ofertas");
         	String fecha = subasta.getString("Fecha");
         	Empleado empleado = (Empleado) subasta.get("Empleado");
         	Administrador admin = (Administrador) subasta.get("Administrador");
         	
         	Subasta Subasta = new Subasta(pieza, precioFinal, fecha, empleado, admin);
-        	for (String oferta : ofertas) 
+        	
+        	JSONArray ofertas = (JSONArray) subasta.get("Ofertas");
+        	for (Object jOferta : ofertas) 
         	{
+        		String oferta = (String) jOferta;
         		Subasta.añadirOferta(oferta);
         	}
+        	
         	Subasta.setTerminada();
+        	
             adminp.añadirSubasta(Subasta);
         }
 	}

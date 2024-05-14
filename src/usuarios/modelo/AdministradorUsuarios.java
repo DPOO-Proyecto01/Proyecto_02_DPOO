@@ -197,5 +197,9 @@ public class AdministradorUsuarios
 	 return ultimoID;
  }
 	
+	public void agregarID(Integer ID)
+	{	if ((listaIDs.contains(ID))!=true)
+		listaIDs.add(ID);
+	}
 }
 

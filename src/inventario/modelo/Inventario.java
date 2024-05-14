@@ -200,4 +200,10 @@ public class Inventario
 		ids.add(pieza.getId());
 		
 	}
+	
+	public void añadirId(String id) 
+	{
+		if ((this.ids.contains(id))!=true)
+		this.ids.add(id);
+	}
 }

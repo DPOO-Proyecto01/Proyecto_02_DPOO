@@ -21,6 +21,7 @@ public class Venta
 	private Cliente comprador;
 	
 	
+	
 	public Venta(Pieza pieza, double precio, Empleado empleado, Administrador admin, String medioDePago, Cliente comprador) 
 	{
 		this.pieza = pieza;

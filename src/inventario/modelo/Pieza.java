@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import procesos.modelo.Venta;
+import usuarios.modelo.Cliente;
 
 public abstract class Pieza 
 {
@@ -21,7 +22,7 @@ public abstract class Pieza
 	private double precio;
 	private double precioMinimo;
 	private String fechaDePrestamo;
-	private Map<String,Venta> historial;
+	private Map<Cliente,Venta> historial;
 	
 	
 	public Pieza(String autores,String fecha,String origen,String descripcion,double precio,String fechaP,String titulo,
@@ -33,12 +34,12 @@ public abstract class Pieza
 		this.origen = origen;
 		this.descripcion = descripcion;
 		this.precio = precio;
-		fechaDePrestamo = fechaP;
+		this.fechaDePrestamo = fechaP;
 		this.titulo = titulo;
 		subastable = false;
 		disponible = false;
-		precioMinimo = minPrecio;
-		historial = new HashMap<String, Venta>();
+		this.precioMinimo = minPrecio;
+		historial = new HashMap<Cliente, Venta>();
 	}
 
 	public String getId() 
@@ -132,7 +133,7 @@ public abstract class Pieza
 	}
 	
 
-	public Map<String, Venta> getHistorial() 
+	public Map<Cliente, Venta> getHistorial() 
 	{
 		return historial;
 	}
@@ -159,6 +160,13 @@ public abstract class Pieza
 		{
 			subastable = true;
 		}
+	}
+	
+	public void añadirAlHistorial(Venta venta) 
+	{
+		Cliente comprador = venta.getComprador();
+		
+		this.historial.put(comprador, venta);
 	}
 	
 }
