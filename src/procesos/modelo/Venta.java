@@ -79,6 +79,11 @@ public class Venta
 	public Cliente getComprador() {
 		return comprador;
 	}
+
+
+	public void setAdmin(Administrador admin) {
+		this.admin = admin;
+	}
 	
 	
 	

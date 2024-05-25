@@ -59,7 +59,7 @@ public class ConsolaLogin {
 		scanner.close();
 	}
 	
-	public static void Login() {
+	public static void Login() throws FileNotFoundException {
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.println("Por favor ingrese su tipo de usuario para hacer Login:");
@@ -80,7 +80,8 @@ public class ConsolaLogin {
 				Cliente usuario = galeria.getAdminUsuarios().buscarCliente(username);
 				ConsolaCliente.printMenu(usuario);
 			} else if (tipo.equals("2")) {
-				ConsolaCajero.printMenu();
+				Cajero cajero = galeria.getAdminUsuarios().buscarCajero(username);
+				ConsolaCajero.printMenu(cajero);
 			} else if (tipo.equals("3")) {
 				ConsolaOperador.printMenu();
 			} else if (tipo.equals("4")) {
