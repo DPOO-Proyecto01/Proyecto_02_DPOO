@@ -11,6 +11,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/nTaller3y4AerolineaEsqueleto/lib/org.json-1.6-20240205.jar"/>
+	<classpathentry kind="lib" path="/Users/andrestello/Downloads/nTaller3y4AerolineaEsqueleto.zip"/>
 	<classpathentry kind="output" path=""/>
 </classpath>

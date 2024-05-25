@@ -1,8 +1,13 @@
 package consola;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
+
 import usuarios.modelo.*;
-import inventario.modelo.Galeria;
+import inventario.modelo.*;
+import procesos.modelo.AdministradorProcesos;
+import galeria.persistencia.*;
 
 public class ConsolaLogin {
 	HashMap<Integer, Cliente> clientes;
@@ -10,17 +15,28 @@ public class ConsolaLogin {
 	HashMap<Integer, Operador> operadores;
 	HashMap<Integer, Administrador> administradores;
 	static Galeria galeria;
+	static Inventario inventario;
+	static AdministradorProcesos adminProcesos;
+	static AdministradorUsuarios adminUsuarios;
 	
 	
-	public ConsolaLogin(Galeria galeria){
+	public ConsolaLogin(Galeria galeria) throws IOException{
 		clientes = new HashMap<Integer, Cliente>();
 		cajeros = new HashMap<Integer, Cajero>();
 		operadores = new HashMap<Integer, Operador>();
 		administradores = new HashMap<Integer, Administrador>();
 		
+		inventario = new Inventario();
+		adminProcesos = new AdministradorProcesos();
+		adminUsuarios = new AdministradorUsuarios();
+		galeria = new Galeria(inventario, adminProcesos, adminUsuarios);
+		
+		CentralPersistencia.getPersistenciaUsuarios().cargarUsuarios("./data/usuarios", galeria);
+		CentralPersistencia.getPersistenciaProcesos().cargarProcesos("./data/procesos", galeria);
+		CentralPersistencia.getPersistenciaInventario().cargarInventario("./data/inventario", galeria);
 	}
 	
-	public static void printMenu() {
+	public static void printMenu() throws FileNotFoundException {
 		Scanner scanner = new Scanner(System.in);
 		String accion = "0";
 		while (!(accion.equals("3"))) {
@@ -36,6 +52,9 @@ public class ConsolaLogin {
 			} else if (accion.equals("2")) {
 				Registrar();
 			} 
+			CentralPersistencia.getPersistenciaInventario().guardarInventario("./data/inventario", galeria);
+			CentralPersistencia.getPersistenciaProcesos().guardarProcesos("./data/procesos", galeria);
+			CentralPersistencia.getPersistenciaUsuarios().guardarUsuarios("./data/usuarios", galeria);
 		}
 		scanner.close();
 	}
@@ -113,7 +132,7 @@ public class ConsolaLogin {
 		scanner.close();
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		ConsolaLogin consolaLogin = new ConsolaLogin(galeria);
 		
 		printMenu(); 
