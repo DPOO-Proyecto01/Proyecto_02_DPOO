@@ -31,17 +31,30 @@ public class ConsolaCajero {
 			if (accion.equals("1")) {
 				System.out.println("Ingrese el id de la pieza");
 				String id = scanner.nextLine();
-				Pieza pieza = galeria.getInventario().buscarPieza(id);
-				System.out.println("Ingrese el usuario del comprador:");
-				String username = scanner.nextLine();
-				Cliente cliente = galeria.getAdminUsuarios().buscarCliente(username);
-				System.out.println("Ingrese el metodo de pago:");
-				String metodo = scanner.nextLine();
-				System.out.println("Ingrese el administrador que confirmo la venta:");
-				String nomAdmin = scanner.nextLine();
-				Administrador admin = galeria.getAdminUsuarios().buscarAdmin(nomAdmin);
-				Venta venta = new Venta(pieza, pieza.getPrecio(), cajero, admin, metodo, cliente);
-				galeria.getAdminProcesos().añadirVenta(venta);
+				if (galeria.getInventario().getIds().contains(id)) {
+					
+					Pieza pieza = galeria.getInventario().buscarPieza(id);
+					System.out.println("Ingrese el usuario del comprador:");
+					String username = scanner.nextLine();
+					Cliente cliente = galeria.getAdminUsuarios().buscarCliente(username);
+					
+						if (!(cliente.equals(null))) {
+							System.out.println("Ingrese el metodo de pago:");
+							String metodo = scanner.nextLine();
+							System.out.println("Ingrese el administrador que confirmo la venta:");
+							String nomAdmin = scanner.nextLine();
+							Administrador admin = galeria.getAdminUsuarios().buscarAdmin(nomAdmin);
+							
+							if (!(admin.equals(null))) {
+								Venta venta = new Venta(pieza, pieza.getPrecio(), cajero, admin, metodo, cliente);
+								galeria.getAdminProcesos().añadirVenta(venta);
+						} else {System.out.println("No se encontro el administrador, vuelva a intentarlo");}
+						
+						
+					} else {System.out.println("No se encontro el usuario, vuelva a intentar");}
+					
+				} else {System.out.println("No se encontro la pieza que esta buscando, vuelva a intentar");}
+				
 				
 			}
 		
