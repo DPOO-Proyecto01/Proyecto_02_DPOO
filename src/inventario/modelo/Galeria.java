@@ -1,5 +1,6 @@
 package inventario.modelo;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import galeria.persistencia.CentralPersistencia;
@@ -69,33 +70,33 @@ public class Galeria
 		cargador.cargarInventario(archivo,this);
 	}
 	
-	public void guardarInventario (String archivo)
+	public void guardarInventario (String archivo) throws FileNotFoundException
 	{
 		PersistenciaInventario cargador = CentralPersistencia.getPersistenciaInventario();
-		cargador.guardarInventario(archivo);
+		cargador.guardarInventario(archivo, this);
 	}
 	
-	public void cargarProcesos (String archivo)
+	public void cargarProcesos (String archivo) throws IOException
 	{
 		PersistenciaProcesos cargador = CentralPersistencia.getPersistenciaProcesos();
-		cargador.cargarProcesos(archivo);
+		cargador.cargarProcesos(archivo, this);
 	}
 	
-	public void guardarProcesos (String archivo)
+	public void guardarProcesos (String archivo) throws FileNotFoundException
 	{
 		PersistenciaProcesos cargador = CentralPersistencia.getPersistenciaProcesos();
-		cargador.guardarProcesos(archivo);
+		cargador.guardarProcesos(archivo, this);
 	}
 	
-	public void cargarUsuarios (String archivo)
+	public void cargarUsuarios (String archivo) throws IOException
 	{
 		PersistenciaUsuarios cargador = CentralPersistencia.getPersistenciaUsuarios();
-		cargador.cargarUsuarios(archivo);
+		cargador.cargarUsuarios(archivo, this);
 	}
 	
-	public void guardarUsuarios (String archivo)
+	public void guardarUsuarios (String archivo) throws FileNotFoundException
 	{
 		PersistenciaUsuarios cargador = CentralPersistencia.getPersistenciaUsuarios();
-		cargador.guardarUsuarios(archivo);
+		cargador.guardarUsuarios(archivo, this);
 	}
 }
