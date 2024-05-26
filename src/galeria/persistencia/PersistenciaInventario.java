@@ -92,7 +92,7 @@ public class PersistenciaInventario
 			jPieza.put( "fechaDePrestamo", pieza.getFechaDePrestamo());
 			
 			JSONArray jHistorial = new JSONArray( );
-			Map<String,Venta> historial = pieza.getHistorial();
+			Map<Cliente,Venta> historial = pieza.getHistorial();
 			for (Venta venta : historial.values()) 
 			{
 				jHistorial.put (venta);
@@ -101,19 +101,29 @@ public class PersistenciaInventario
 			
 			if (tipo.equalsIgnoreCase("Escultura")) 
 			{
-			
+				Escultura escultura = (Escultura) pieza;
+				jPieza.put( "material", escultura.getMaterial() );
+				jPieza.put( "dimensiones", escultura.getDimensiones() );
+				jPieza.put( "instalacion", escultura.getInstalacion() );
+				jPieza.put( "peso", escultura.getPeso());
+				
 				
 			}
 			else if (tipo.equalsIgnoreCase("Pintura")) 
 			{
-				
+				Pintura pintura = (Pintura) pieza;
+				jPieza.put( "tecnica", pintura.getTecnica() );
+				jPieza.put( "dimensiones", pintura.getDimensiones() );
 			}
 			else if (tipo.equalsIgnoreCase("Video")) 
 			{
-				
+				Video video = (Video) pieza;
+				jPieza.put( "duracion", video.getDuracion() );
+				jPieza.put( "instalacion", video.getInstalacion() );
+				jPieza.put( "tamanio", video.getTamanio() );
 			}
 
-            jExhib.put(tipo);
+            jExhib.put(jPieza);
         }
         jobject.put( "Exhibicion", jExhib );
 		
@@ -142,7 +152,7 @@ public class PersistenciaInventario
 			jPieza.put( "fechaDePrestamo", pieza.getFechaDePrestamo());
 			
 			JSONArray jHistorial = new JSONArray( );
-			Map<String,Venta> historial = pieza.getHistorial();
+			Map<Cliente,Venta> historial = pieza.getHistorial();
 			for (Venta venta : historial.values()) 
 			{
 				jHistorial.put (venta);
@@ -151,19 +161,29 @@ public class PersistenciaInventario
 			
 			if (tipo.equalsIgnoreCase("Escultura")) 
 			{
-			
+				Escultura escultura = (Escultura) pieza;
+				jPieza.put( "material", escultura.getMaterial() );
+				jPieza.put( "dimensiones", escultura.getDimensiones() );
+				jPieza.put( "instalacion", escultura.getInstalacion() );
+				jPieza.put( "peso", escultura.getPeso());
+				
 				
 			}
 			else if (tipo.equalsIgnoreCase("Pintura")) 
 			{
-				
+				Pintura pintura = (Pintura) pieza;
+				jPieza.put( "tecnica", pintura.getTecnica() );
+				jPieza.put( "dimensiones", pintura.getDimensiones() );
 			}
 			else if (tipo.equalsIgnoreCase("Video")) 
 			{
-				
+				Video video = (Video) pieza;
+				jPieza.put( "duracion", video.getDuracion() );
+				jPieza.put( "instalacion", video.getInstalacion() );
+				jPieza.put( "tamanio", video.getTamanio() );
 			}
 
-            jBodega.put(tipo);
+            jBodega.put(jPieza);
         }
         jobject.put( "Bodega", jBodega );
 		
@@ -192,7 +212,7 @@ public class PersistenciaInventario
 			jPieza.put( "fechaDePrestamo", pieza.getFechaDePrestamo());
 			
 			JSONArray jHistorial = new JSONArray( );
-			Map<String,Venta> historial = pieza.getHistorial();
+			Map<Cliente,Venta> historial = pieza.getHistorial();
 			for (Venta venta : historial.values()) 
 			{
 				jHistorial.put (venta);
@@ -201,19 +221,29 @@ public class PersistenciaInventario
 			
 			if (tipo.equalsIgnoreCase("Escultura")) 
 			{
-			
+				Escultura escultura = (Escultura) pieza;
+				jPieza.put( "material", escultura.getMaterial() );
+				jPieza.put( "dimensiones", escultura.getDimensiones() );
+				jPieza.put( "instalacion", escultura.getInstalacion() );
+				jPieza.put( "peso", escultura.getPeso());
+				
 				
 			}
 			else if (tipo.equalsIgnoreCase("Pintura")) 
 			{
-				
+				Pintura pintura = (Pintura) pieza;
+				jPieza.put( "tecnica", pintura.getTecnica() );
+				jPieza.put( "dimensiones", pintura.getDimensiones() );
 			}
 			else if (tipo.equalsIgnoreCase("Video")) 
 			{
-				
+				Video video = (Video) pieza;
+				jPieza.put( "duracion", video.getDuracion() );
+				jPieza.put( "instalacion", video.getInstalacion() );
+				jPieza.put( "tamanio", video.getTamanio() );
 			}
 
-            jDevolucion.put(tipo);
+            jDevolucion.put(jPieza);
         }
         jobject.put( "Devolucion", jDevolucion );
 		
@@ -242,7 +272,7 @@ public class PersistenciaInventario
 			jPieza.put( "fechaDePrestamo", pieza.getFechaDePrestamo());
 			
 			JSONArray jHistorial = new JSONArray( );
-			Map<String,Venta> historial = pieza.getHistorial();
+			Map<Cliente,Venta> historial = pieza.getHistorial();
 			for (Venta venta : historial.values()) 
 			{
 				jHistorial.put (venta);
@@ -251,19 +281,29 @@ public class PersistenciaInventario
 			
 			if (tipo.equalsIgnoreCase("Escultura")) 
 			{
-			
+				Escultura escultura = (Escultura) pieza;
+				jPieza.put( "material", escultura.getMaterial() );
+				jPieza.put( "dimensiones", escultura.getDimensiones() );
+				jPieza.put( "instalacion", escultura.getInstalacion() );
+				jPieza.put( "peso", escultura.getPeso());
+				
 				
 			}
 			else if (tipo.equalsIgnoreCase("Pintura")) 
 			{
-				
+				Pintura pintura = (Pintura) pieza;
+				jPieza.put( "tecnica", pintura.getTecnica() );
+				jPieza.put( "dimensiones", pintura.getDimensiones() );
 			}
 			else if (tipo.equalsIgnoreCase("Video")) 
 			{
-				
+				Video video = (Video) pieza;
+				jPieza.put( "duracion", video.getDuracion() );
+				jPieza.put( "instalacion", video.getInstalacion() );
+				jPieza.put( "tamanio", video.getTamanio() );
 			}
 
-            jEnVenta.put(tipo);
+            jEnVenta.put(jPieza);
         }
         jobject.put( "EnVenta", jEnVenta );
 		
@@ -292,7 +332,7 @@ public class PersistenciaInventario
 			jPieza.put( "fechaDePrestamo", pieza.getFechaDePrestamo());
 			
 			JSONArray jHistorial = new JSONArray( );
-			Map<String,Venta> historial = pieza.getHistorial();
+			Map<Cliente,Venta> historial = pieza.getHistorial();
 			for (Venta venta : historial.values()) 
 			{
 				jHistorial.put (venta);
@@ -301,19 +341,29 @@ public class PersistenciaInventario
 			
 			if (tipo.equalsIgnoreCase("Escultura")) 
 			{
-			
+				Escultura escultura = (Escultura) pieza;
+				jPieza.put( "material", escultura.getMaterial() );
+				jPieza.put( "dimensiones", escultura.getDimensiones() );
+				jPieza.put( "instalacion", escultura.getInstalacion() );
+				jPieza.put( "peso", escultura.getPeso());
+				
 				
 			}
 			else if (tipo.equalsIgnoreCase("Pintura")) 
 			{
-				
+				Pintura pintura = (Pintura) pieza;
+				jPieza.put( "tecnica", pintura.getTecnica() );
+				jPieza.put( "dimensiones", pintura.getDimensiones() );
 			}
 			else if (tipo.equalsIgnoreCase("Video")) 
 			{
-				
+				Video video = (Video) pieza;
+				jPieza.put( "duracion", video.getDuracion() );
+				jPieza.put( "instalacion", video.getInstalacion() );
+				jPieza.put( "tamanio", video.getTamanio() );
 			}
 
-            jParaSubasta.put(tipo);
+            jParaSubasta.put(jPieza);
         }
         jobject.put( "ParaSubasta", jParaSubasta );
 		
@@ -342,7 +392,7 @@ public class PersistenciaInventario
 			jPieza.put( "fechaDePrestamo", pieza.getFechaDePrestamo());
 			
 			JSONArray jHistorial = new JSONArray( );
-			Map<String,Venta> historial = pieza.getHistorial();
+			Map<Cliente,Venta> historial = pieza.getHistorial();
 			for (Venta venta : historial.values()) 
 			{
 				jHistorial.put (venta);
@@ -351,19 +401,29 @@ public class PersistenciaInventario
 			
 			if (tipo.equalsIgnoreCase("Escultura")) 
 			{
-			
+				Escultura escultura = (Escultura) pieza;
+				jPieza.put( "material", escultura.getMaterial() );
+				jPieza.put( "dimensiones", escultura.getDimensiones() );
+				jPieza.put( "instalacion", escultura.getInstalacion() );
+				jPieza.put( "peso", escultura.getPeso());
+				
 				
 			}
 			else if (tipo.equalsIgnoreCase("Pintura")) 
 			{
-				
+				Pintura pintura = (Pintura) pieza;
+				jPieza.put( "tecnica", pintura.getTecnica() );
+				jPieza.put( "dimensiones", pintura.getDimensiones() );
 			}
 			else if (tipo.equalsIgnoreCase("Video")) 
 			{
-				
+				Video video = (Video) pieza;
+				jPieza.put( "duracion", video.getDuracion() );
+				jPieza.put( "instalacion", video.getInstalacion() );
+				jPieza.put( "tamanio", video.getTamanio() );
 			}
 
-            jPiezasPasadas.put(tipo);
+            jPiezasPasadas.put(jPieza);
         }
         jobject.put( "PiezasPasadas", jPiezasPasadas );
 		
@@ -376,13 +436,13 @@ public class PersistenciaInventario
 		Inventario inventario = galeria.getInventario();
 
 
-        cargarExhibicion( inventario, raiz.getJSONArray( "ListaIds" ) );
-        cargarBodega( inventario, raiz.getJSONArray( "Operadores" ) );
-        cargarDevolucion( inventario, raiz.getJSONArray( "Clientes" ) );
-        cargarEnVenta( inventario, raiz.getJSONArray( "Administradores" ) );
-        cargarParaSubasta( inventario, raiz.getJSONArray( "Cajeros" ) );
-        cargarPiezasPasadas( inventario, raiz.getJSONArray( "Cajeros" ) );
-        cargarIDs( inventario, raiz.getJSONArray( "Cajeros" ) );
+        cargarExhibicion( inventario, raiz.getJSONArray( "Exhibicion" ) );
+        cargarBodega( inventario, raiz.getJSONArray( "Bodega" ) );
+        cargarDevolucion( inventario, raiz.getJSONArray( "Devolucion" ) );
+        cargarEnVenta( inventario, raiz.getJSONArray( "EnVenta" ) );
+        cargarParaSubasta( inventario, raiz.getJSONArray( "ParaSubasta" ) );
+        cargarPiezasPasadas( inventario, raiz.getJSONArray( "PiezasPasadas" ) );
+        cargarIDs( inventario, raiz.getJSONArray( "ListaIds" ) );
 	}
 	
 	
@@ -399,39 +459,54 @@ public class PersistenciaInventario
 
 	private void cargarExhibicion(Inventario inventario, JSONArray jExhibicion) 
 	{
-		int numClientes = jExhibicion.length( );
-        for( int i = 0; i < numClientes; i++ ) 
+		
+		int numExhibicion = jExhibicion.length( );
+        for( int i = 0; i < numExhibicion; i++ ) 
         {
         	JSONObject JPieza = jExhibicion.getJSONObject( i );
         	
-        	String id = JPieza.getString("id");
         	String tipo = JPieza.getString("tipo");
-			String autores = JPieza.getString("autores");
-			String fecha = JPieza.getString("fecha");
-			String origen = JPieza.getString("origen");
-			String descripcion =JPieza.getString("descripcion");
-        	String titulo = JPieza.getString("titulo");
-        	String status = JPieza.getString("status");
-        	boolean subastable = JPieza.getBoolean("subastable");
-        	boolean disponible = JPieza.getBoolean("disponible");
-        	double precio = JPieza.getDouble("precio");
-        	double precioMinimo = JPieza.getDouble("precioMinimo");
-        	String fechaDePrestamo = JPieza.getString("fechaDePrestamo");
         	
-        	Pieza pieza = new Pieza(autores, fecha, origen, descripcion, precio, fechaDePrestamo, titulo, precioMinimo);
-        	pieza.setId(id);
-        	
-        	pieza.setSubastable(subastable);
-        	
-        	pieza.setDisponible(disponible);
-        	
-        	JSONArray Ventas = (JSONArray) JPieza.get("historial");
-        	for (Object OVenta : Ventas) 
+        	if (tipo.equalsIgnoreCase("Escultura")) 
         	{
-        		Venta venta = (Venta) OVenta;
-        		pieza.añadirAlHistorial(venta);;
+        		Escultura pieza = null;
+        		pieza = (Escultura) cargarEscultura(JPieza, pieza);
+        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
+            	for (Object OVenta : Ventas) 
+            	{
+            		Venta venta = (Venta) OVenta;
+            		pieza.añadirAlHistorial(venta);;
+            	}
+            	
+            	inventario.añadirAExhibicion(pieza);
+        		
         	}
-        	
+        	else if (tipo.equalsIgnoreCase("Pintura")) 
+			{
+        		Pintura pieza = null;
+        		pieza = (Pintura) cargarPintura(JPieza, pieza);
+        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
+            	for (Object OVenta : Ventas) 
+            	{
+            		Venta venta = (Venta) OVenta;
+            		pieza.añadirAlHistorial(venta);;
+            	}
+            	
+            	inventario.añadirAExhibicion(pieza);
+			}
+        	else if (tipo.equalsIgnoreCase("Video")) 
+        	{
+        		Video pieza = null;
+        		pieza = (Video) cargarVideo(JPieza, pieza);
+        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
+            	for (Object OVenta : Ventas) 
+            	{
+            		Venta venta = (Venta) OVenta;
+            		pieza.añadirAlHistorial(venta);;
+            	}
+            	
+            	inventario.añadirAExhibicion(pieza);
+        	}
             
         }
 		
@@ -439,31 +514,274 @@ public class PersistenciaInventario
 
 	private void cargarBodega(Inventario inventario, JSONArray jBodega) 
 	{
-		// TODO Auto-generated method stub
+		int numBodega = jBodega.length( );
+        for( int i = 0; i < numBodega; i++ ) 
+        {
+        	JSONObject JPieza = jBodega.getJSONObject( i );
+        	
+        	String tipo = JPieza.getString("tipo");
+        	
+        	if (tipo.equalsIgnoreCase("Escultura")) 
+        	{
+        		Escultura pieza = null;
+        		pieza = (Escultura) cargarEscultura(JPieza, pieza);
+        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
+            	for (Object OVenta : Ventas) 
+            	{
+            		Venta venta = (Venta) OVenta;
+            		pieza.añadirAlHistorial(venta);;
+            	}
+            	
+            	inventario.añadirABodega(pieza);
+        		
+        	}
+        	else if (tipo.equalsIgnoreCase("Pintura")) 
+			{
+        		Pintura pieza = null;
+        		pieza = (Pintura) cargarPintura(JPieza, pieza);
+        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
+            	for (Object OVenta : Ventas) 
+            	{
+            		Venta venta = (Venta) OVenta;
+            		pieza.añadirAlHistorial(venta);;
+            	}
+            	
+            	inventario.añadirABodega(pieza);
+			}
+        	else if (tipo.equalsIgnoreCase("Video")) 
+        	{
+        		Video pieza = null;
+        		pieza = (Video) cargarVideo(JPieza, pieza);
+        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
+            	for (Object OVenta : Ventas) 
+            	{
+            		Venta venta = (Venta) OVenta;
+            		pieza.añadirAlHistorial(venta);;
+            	}
+            	
+            	inventario.añadirABodega(pieza);
+        	}
+            
+        }
 		
 	}
 
 	private void cargarDevolucion(Inventario inventario, JSONArray jDevolucion) 
 	{
-		// TODO Auto-generated method stub
+		int numDevolucion = jDevolucion.length( );
+        for( int i = 0; i < numDevolucion; i++ ) 
+        {
+        	JSONObject JPieza = jDevolucion.getJSONObject( i );
+        	
+        	String tipo = JPieza.getString("tipo");
+        	
+        	if (tipo.equalsIgnoreCase("Escultura")) 
+        	{
+        		Escultura pieza = null;
+        		pieza = (Escultura) cargarEscultura(JPieza, pieza);
+
+            	JSONArray Ventas = (JSONArray) JPieza.get("historial");
+            	for (Object OVenta : Ventas) 
+            	{
+            		Venta venta = (Venta) OVenta;
+            		pieza.añadirAlHistorial(venta);;
+            	}
+            	
+            	inventario.añadirADevolucion(pieza);
+        		
+        	}
+        	else if (tipo.equalsIgnoreCase("Pintura")) 
+			{
+        		Pintura pieza = null;
+        		pieza = (Pintura) cargarPintura(JPieza, pieza);
+
+            	JSONArray Ventas = (JSONArray) JPieza.get("historial");
+            	for (Object OVenta : Ventas) 
+            	{
+            		Venta venta = (Venta) OVenta;
+            		pieza.añadirAlHistorial(venta);;
+            	}
+            	
+            	inventario.añadirADevolucion(pieza);
+			}
+        	else if (tipo.equalsIgnoreCase("Video")) 
+        	{
+        		Video pieza = null;
+        		pieza = (Video) cargarVideo(JPieza, pieza);
+
+            	JSONArray Ventas = (JSONArray) JPieza.get("historial");
+            	for (Object OVenta : Ventas) 
+            	{
+            		Venta venta = (Venta) OVenta;
+            		pieza.añadirAlHistorial(venta);;
+            	}
+            	
+            	inventario.añadirADevolucion(pieza);
+        	}
+            
+        }
 		
 	}
 
 	private void cargarEnVenta(Inventario inventario, JSONArray jEnVenta) 
 	{
-		// TODO Auto-generated method stub
+		int numEnVenta = jEnVenta.length( );
+        for( int i = 0; i < numEnVenta; i++ ) 
+        {
+        	JSONObject JPieza = jEnVenta.getJSONObject( i );
+        	
+        	String tipo = JPieza.getString("tipo");
+        	
+        	if (tipo.equalsIgnoreCase("Escultura")) 
+        	{
+        		Escultura pieza = null;
+        		pieza = (Escultura) cargarEscultura(JPieza, pieza);
+        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
+            	for (Object OVenta : Ventas) 
+            	{
+            		Venta venta = (Venta) OVenta;
+            		pieza.añadirAlHistorial(venta);;
+            	}
+            	
+            	inventario.añadirAEnVenta(pieza);
+        		
+        	}
+        	else if (tipo.equalsIgnoreCase("Pintura")) 
+			{
+        		Pintura pieza = null;
+        		pieza = (Pintura) cargarPintura(JPieza, pieza);
+        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
+            	for (Object OVenta : Ventas) 
+            	{
+            		Venta venta = (Venta) OVenta;
+            		pieza.añadirAlHistorial(venta);;
+            	}
+            	
+            	inventario.añadirAEnVenta(pieza);
+			}
+        	else if (tipo.equalsIgnoreCase("Video")) 
+        	{
+        		Video pieza = null;
+        		pieza = (Video) cargarVideo(JPieza, pieza);
+        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
+            	for (Object OVenta : Ventas) 
+            	{
+            		Venta venta = (Venta) OVenta;
+            		pieza.añadirAlHistorial(venta);;
+            	}
+            	
+            	inventario.añadirAEnVenta(pieza);
+        	}
+            
+        }
 		
 	}
 
 	private void cargarParaSubasta(Inventario inventario, JSONArray jParaSubasta) 
 	{
-		// TODO Auto-generated method stub
+		int numParaSubasta = jParaSubasta.length( );
+        for( int i = 0; i < numParaSubasta; i++ ) 
+        {
+        	JSONObject JPieza = jParaSubasta.getJSONObject( i );
+        	
+        	String tipo = JPieza.getString("tipo");
+        	
+        	if (tipo.equalsIgnoreCase("Escultura")) 
+        	{
+        		Escultura pieza = null;
+        		pieza = (Escultura) cargarEscultura(JPieza, pieza);
+        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
+            	for (Object OVenta : Ventas) 
+            	{
+            		Venta venta = (Venta) OVenta;
+            		pieza.añadirAlHistorial(venta);;
+            	}
+            	
+            	inventario.añadirASubastas(pieza);
+        		
+        	}
+        	else if (tipo.equalsIgnoreCase("Pintura")) 
+			{
+        		Pintura pieza = null;
+        		pieza = (Pintura) cargarPintura(JPieza, pieza);
+        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
+            	for (Object OVenta : Ventas) 
+            	{
+            		Venta venta = (Venta) OVenta;
+            		pieza.añadirAlHistorial(venta);;
+            	}
+            	
+            	inventario.añadirASubastas(pieza);
+			}
+        	else if (tipo.equalsIgnoreCase("Video")) 
+        	{
+        		Video pieza = null;
+        		pieza = (Video) cargarVideo(JPieza, pieza);
+        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
+            	for (Object OVenta : Ventas) 
+            	{
+            		Venta venta = (Venta) OVenta;
+            		pieza.añadirAlHistorial(venta);;
+            	}
+            	
+            	inventario.añadirASubastas(pieza);
+        	}
+            
+        }
 		
 	}
 
 	private void cargarPiezasPasadas(Inventario inventario, JSONArray jPiezasPasadas) 
 	{
-		// TODO Auto-generated method stub
+		int numPiezasPasadas = jPiezasPasadas.length( );
+        for( int i = 0; i < numPiezasPasadas; i++ ) 
+        {
+        	
+        	JSONObject JPieza = jPiezasPasadas.getJSONObject( i );
+        	
+        	String tipo = JPieza.getString("tipo");
+        	
+        	if (tipo.equalsIgnoreCase("Escultura")) 
+        	{	
+        		
+        		Escultura pieza = null;
+        		pieza = (Escultura) cargarEscultura(JPieza, pieza);
+        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
+            	for (Object OVenta : Ventas) 
+            	{
+            		Venta venta = (Venta) OVenta;
+            		pieza.añadirAlHistorial(venta);;
+            	}
+            	inventario.añadirAPasadas(pieza);
+        		
+        	}
+        	else if (tipo.equalsIgnoreCase("Pintura")) 
+			{
+        		Pintura pieza = null;
+        		pieza = (Pintura) cargarPintura(JPieza, pieza);
+        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
+            	for (Object OVenta : Ventas) 
+            	{
+            		Venta venta = (Venta) OVenta;
+            		pieza.añadirAlHistorial(venta);;
+            	}
+            	inventario.añadirAPasadas(pieza);
+			}
+        	else if (tipo.equalsIgnoreCase("Video")) 
+        	{
+        		Video pieza = null;
+        		pieza = (Video) cargarVideo(JPieza, pieza);
+        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
+            	for (Object OVenta : Ventas) 
+            	{
+            		Venta venta = (Venta) OVenta;
+            		pieza.añadirAlHistorial(venta);
+            	}
+            	
+            	inventario.añadirAPasadas(pieza);
+            	
+        	}    
+        }
 		
 	}
 
@@ -516,10 +834,16 @@ public class PersistenciaInventario
 		String fechaP = jPieza.getString("fechaPrestamo");
 		String tecnica = jPieza.getString("tecnica");
 		String dimensiones = jPieza.getString("dimensiones");
+		boolean disponible = jPieza.getBoolean("disponible");
+		boolean subastable = jPieza.getBoolean("subastable");
+		String status = jPieza.getString("status");
 		
 		nuevaPieza = new Pintura(autores,fecha,origen,descripcion,precio,
 				fechaP,titulo,precioMin,tecnica,dimensiones);
 		nuevaPieza.setId(id);
+		nuevaPieza.setDisponible(disponible);
+		nuevaPieza.setSubastable(subastable);
+		nuevaPieza.setStatus(status);
 		
 		
 		return nuevaPieza;
@@ -540,10 +864,16 @@ public class PersistenciaInventario
 		double tamanio = jPieza.getDouble("tamanio");
 		double duracion = jPieza.getDouble("duracion");
 		String instalacion = jPieza.getString("instalacion");
+		boolean disponible = jPieza.getBoolean("disponible");
+		boolean subastable = jPieza.getBoolean("subastable");
+		String status = jPieza.getString("status");
 		
 		nuevaPieza = new Video(autores,fecha,origen,descripcion,precio,
 				fechaP,titulo,precioMin,tamanio,duracion,instalacion);
 		nuevaPieza.setId(id);
+		nuevaPieza.setDisponible(disponible);
+		nuevaPieza.setSubastable(subastable);
+		nuevaPieza.setStatus(status);
 		
 		
 		return nuevaPieza;

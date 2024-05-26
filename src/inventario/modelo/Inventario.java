@@ -206,4 +206,41 @@ public class Inventario
 		if ((this.ids.contains(id))!=true)
 		this.ids.add(id);
 	}
+	
+	public void añadirAExhibicion(Pieza pieza) 
+	{	
+		String id = pieza.getId();
+		this.exhibicion.put(id, pieza);
+	}
+	
+	public void añadirABodega(Pieza pieza) 
+	{
+		String id = pieza.getId();
+		this.bodega.put(id, pieza);		
+	}
+	
+	public void añadirAEnVenta(Pieza pieza) 
+	{
+		String id = pieza.getId();
+		this.enVenta.put(id, pieza);
+	}
+	
+	public void añadirADevolucion(Pieza pieza) 
+	{
+		String id = pieza.getId();
+		this.devolucion.put(id, pieza);
+	}
+	
+	public void añadirASubastas(Pieza pieza) 
+	{
+		String id = pieza.getId();
+		this.paraSubasta.put(id, pieza);
+
+	}
+	
+	public void añadirAPasadas(Pieza pieza) 
+	{
+		String id = pieza.getId();
+		this.piezasPasadas.put(id, pieza);
+	}
 }
