@@ -83,7 +83,8 @@ public class ConsolaLogin {
 				Cajero cajero = galeria.getAdminUsuarios().buscarCajero(username);
 				ConsolaCajero.printMenu(cajero);
 			} else if (tipo.equals("3")) {
-				ConsolaOperador.printMenu();
+				Operador operador = galeria.getAdminUsuarios().buscarOperador(username);
+				ConsolaOperador.printMenu(operador);
 			} else if (tipo.equals("4")) {
 				ConsolaAdministrador.printMenu();
 			}

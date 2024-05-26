@@ -97,7 +97,13 @@ public class Subasta
 	
 	public void añadirOferta(String oferta)
 	{
-		this.ofertas.add(oferta);
+		String[] partes = oferta.split("-"); 
+		Integer cantidadNueva = Integer.parseInt(partes[1]);
+		Integer cantidad = Integer.parseInt(ofertas.getLast().split("-")[1]);
+		if ((cantidadNueva.compareTo(cantidad)>1)) {
+			this.ofertas.add(oferta);
+			precioFinal = cantidadNueva;
+		}
 	}
 	
 }

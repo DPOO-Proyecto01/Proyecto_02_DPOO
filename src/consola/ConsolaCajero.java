@@ -47,6 +47,7 @@ public class ConsolaCajero {
 		
 		}
 		CentralPersistencia.getPersistenciaProcesos().guardarProcesos("./data/procesos", galeria);
+		scanner.close();
 	}
 
 
