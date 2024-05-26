@@ -11,7 +11,7 @@ public class AdministradorUsuarios
 	private HashMap<Integer, Operador> operadores;
 	private HashMap<Integer, Cliente> clientes;
 	private static ArrayList<Integer> listaIDs = new ArrayList<Integer>();
-	private static Integer ultimoID = listaIDs.get(listaIDs.size()-1);
+	private static Integer ultimoID;
 	//En el ArrayList listaIDs a algunos integrantes les sale la opcion .getLast()
 	//pero a otros no, se dejara como .get(listaIds.size()-1) para que sirva en todas 
 	//las maquinas
@@ -22,6 +22,11 @@ public class AdministradorUsuarios
 		cajeros = new HashMap<Integer,Cajero>();
 		operadores = new HashMap<Integer,Operador>();
 		clientes = new HashMap<Integer,Cliente>();
+		if (listaIDs.size()>0) {
+			ultimoID = listaIDs.get(listaIDs.size()-1);
+		} else { 
+			ultimoID = 0;
+		}
 	}
 	
 	/**

@@ -18,22 +18,32 @@ public class ConsolaLogin {
 	static Inventario inventario;
 	static AdministradorProcesos adminProcesos;
 	static AdministradorUsuarios adminUsuarios;
+	static String ruta;
 	
 	
-	public ConsolaLogin(Galeria galeria) throws IOException{
+	public ConsolaLogin() throws IOException{
 		clientes = new HashMap<Integer, Cliente>();
 		cajeros = new HashMap<Integer, Cajero>();
 		operadores = new HashMap<Integer, Operador>();
 		administradores = new HashMap<Integer, Administrador>();
 		
+		
+	}
+	
+	private static Galeria cargaDeDatos() throws IOException {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Ingrese la ruta del proyecto:");
+		ruta = scanner.nextLine();
 		inventario = new Inventario();
 		adminProcesos = new AdministradorProcesos();
 		adminUsuarios = new AdministradorUsuarios();
 		galeria = new Galeria(inventario, adminProcesos, adminUsuarios);
 		
-		CentralPersistencia.getPersistenciaUsuarios().cargarUsuarios("./data/usuarios", galeria);
-		CentralPersistencia.getPersistenciaProcesos().cargarProcesos("./data/procesos", galeria);
-		CentralPersistencia.getPersistenciaInventario().cargarInventario("./data/inventario", galeria);
+		CentralPersistencia.getPersistenciaUsuarios().cargarUsuarios("usuarios", galeria);
+		CentralPersistencia.getPersistenciaProcesos().cargarProcesos(ruta + "/src/data/procesos", galeria);
+		CentralPersistencia.getPersistenciaInventario().cargarInventario(ruta + "/src/data/inventario", galeria);
+		scanner.close();
+		return galeria;
 	}
 	
 	public static void printMenu() throws FileNotFoundException {
@@ -52,9 +62,9 @@ public class ConsolaLogin {
 			} else if (accion.equals("2")) {
 				Registrar();
 			} 
-			CentralPersistencia.getPersistenciaInventario().guardarInventario("./data/inventario", galeria);
-			CentralPersistencia.getPersistenciaProcesos().guardarProcesos("./data/procesos", galeria);
-			CentralPersistencia.getPersistenciaUsuarios().guardarUsuarios("./data/usuarios", galeria);
+			CentralPersistencia.getPersistenciaInventario().guardarInventario(ruta + "/src/data/usuarios", galeria);
+			CentralPersistencia.getPersistenciaProcesos().guardarProcesos(ruta + "/src/data/usuarios", galeria);
+			CentralPersistencia.getPersistenciaUsuarios().guardarUsuarios(ruta + "/src/data/usuarios", galeria);
 		}
 		scanner.close();
 	}
@@ -135,9 +145,9 @@ public class ConsolaLogin {
 	}
 	
 	public static void main(String[] args) throws IOException {
-		ConsolaLogin consolaLogin = new ConsolaLogin(galeria);
+		galeria = cargaDeDatos();
+		printMenu();
 		
-		printMenu(); 
 		
 	}
 	
