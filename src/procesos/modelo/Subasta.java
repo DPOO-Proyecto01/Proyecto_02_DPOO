@@ -24,6 +24,10 @@ public class Subasta
 	
 	private Administrador admin;
 	
+	private boolean confirmado;
+	
+	private Integer idComprador;
+	
 	
 	public Subasta(Pieza pieza, double precioFinal, String fecha, Empleado empleado, Administrador admin) 
 	{
@@ -34,6 +38,7 @@ public class Subasta
 		this.fecha = fecha;
 		this.empleado = empleado;
 		this.admin = admin;
+		this.confirmado = false;
 	}
 	
 	/**
@@ -78,6 +83,10 @@ public class Subasta
 	public Pieza getPieza() {
 		return pieza;
 	}
+	
+	public Integer getIdComprador() {
+		return idComprador;
+	}
 
 
 
@@ -103,7 +112,17 @@ public class Subasta
 		if ((cantidadNueva.compareTo(cantidad)>1)) {
 			this.ofertas.add(oferta);
 			precioFinal = cantidadNueva;
+			idComprador = Integer.valueOf(partes[2]);
 		}
+	}
+	
+	
+	public boolean getConfirmado() {
+		return this.confirmado;
+	}
+	
+	public void setConfirmado() {
+		this.confirmado = true;
 	}
 	
 }

@@ -74,6 +74,7 @@ public class PersistenciaProcesos
             jventa.put( "MedioDePago", venta.getMedioDePago() );
             jventa.put( "Empleado", venta.getEmpleado() );
             jventa.put( "Administrador", venta.getAdmin() );
+            jventa.put( "Confirmado", venta.getConfirmado() );
 
             jVentas.put( jventa );
         }
@@ -99,10 +100,12 @@ public class PersistenciaProcesos
 			}
             jSubasta.put( "Ofertas", jOfertas );
             
+            
             jSubasta.put( "Terminada", subasta.isTerminada() );
             jSubasta.put( "Fecha", subasta.getFecha() );
             jSubasta.put( "Empleado", subasta.getEmpleado());
             jSubasta.put( "Administrador", subasta.getAdmin());
+            jSubasta.put( "Confirmado", subasta.getConfirmado());
 
             jSubastasP.put( jSubasta );
         }
@@ -130,6 +133,7 @@ public class PersistenciaProcesos
             jSubasta.put( "Fecha", subasta.getFecha() );
             jSubasta.put( "Empleado", subasta.getEmpleado());
             jSubasta.put( "Administrador", subasta.getAdmin());
+            jSubasta.put( "Confirmado", subasta.getConfirmado());
 
             jSubastasF.put( jSubasta );
         }
@@ -150,8 +154,10 @@ public class PersistenciaProcesos
         	String admin = (String) venta.get("NombreAdministrador");
         	String medioDePago = venta.getString("MedioDePago");
         	Integer comprador =  (Integer) venta.get("idComprador");
+        	boolean confirmado = (boolean) venta.getBoolean("Confirmado");
         	
         	Venta Venta = new Venta(inventario.buscarPieza(idPieza), precio, adminU.buscarCajero(empleado), adminU.buscarAdmin(admin), medioDePago, comprador);
+        	if (confirmado) { Venta.setConfirmado(); }
             adminp.añadirVenta(Venta);
         }
 	}
@@ -168,6 +174,7 @@ public class PersistenciaProcesos
         	String fecha = subasta.getString("Fecha");
         	Empleado empleado = (Empleado) subasta.get("Empleado");
         	Administrador admin = (Administrador) subasta.get("Administrador");
+        	boolean confirmado = (boolean) subasta.getBoolean("Confirmado");
         	
         	Subasta Subasta = new Subasta(pieza, precioFinal, fecha, empleado, admin);
         	
@@ -177,6 +184,8 @@ public class PersistenciaProcesos
         		String oferta = (String) jOferta;
         		Subasta.añadirOferta(oferta);
         	}
+        	
+        	if (confirmado) { Subasta.setConfirmado(); }
         	
             adminp.añadirSubasta(Subasta);
         }
@@ -194,9 +203,10 @@ public class PersistenciaProcesos
         	String fecha = subasta.getString("Fecha");
         	Empleado empleado = (Empleado) subasta.get("Empleado");
         	Administrador admin = (Administrador) subasta.get("Administrador");
+        	boolean confirmado = (boolean) subasta.getBoolean("Confirmado");
         	
         	Subasta Subasta = new Subasta(pieza, precioFinal, fecha, empleado, admin);
-        	
+        	if (confirmado) { Subasta.setConfirmado(); }
         	JSONArray ofertas = (JSONArray) subasta.get("Ofertas");
         	for (Object jOferta : ofertas) 
         	{

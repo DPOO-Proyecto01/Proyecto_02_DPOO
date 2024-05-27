@@ -133,6 +133,10 @@ public class AdministradorUsuarios
 		return null;
 	}
 	
+	public Cliente buscarClientePorId(Integer id) {
+		return clientes.get(id);
+	}
+	
 	public void agregarAdministrador(Administrador user)
 	{
 		administradores.put(user.getID(), user);

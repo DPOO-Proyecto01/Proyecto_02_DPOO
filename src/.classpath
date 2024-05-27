@@ -6,7 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path=""/>
-	<classpathentry exported="true" kind="lib" path="/Users/andrestello/Downloads/nTaller3y4AerolineaEsqueleto.zip"/>
-	<classpathentry kind="lib" path="/Users/andrestello/Desktop/DPOOProyecto2/Proyecto_02_DPOO/src/json-20240303.jar"/>
+	<classpathentry exported="true" kind="lib" path="json-20240303.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>

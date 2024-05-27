@@ -21,6 +21,8 @@ public class Venta
 	
 	private Integer idComprador;
 	
+	private boolean confirmado;
+	
 	
 	
 	public Venta(Pieza pieza, double precio, Empleado empleado, Administrador admin, String medioDePago, Integer integer) 
@@ -31,6 +33,7 @@ public class Venta
 		this.admin = admin;
 		this.medioDePago = medioDePago;	
 		this.idComprador = integer;
+		this.confirmado = false;
 	}
 
 	public Pieza getPieza() {
@@ -82,6 +85,12 @@ public class Venta
 		this.admin = admin;
 	}
 	
+	public boolean getConfirmado() {
+		return this.confirmado;
+	}
 	
+	public void setConfirmado() {
+		this.confirmado = true;
+	}
 	
 }

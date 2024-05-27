@@ -1,5 +1,6 @@
 package procesos.modelo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -100,5 +101,25 @@ public class AdministradorProcesos
 		}
 	}
 	
+	public ArrayList<Venta> getVentasSinConfirmar() {
+		ArrayList<Venta> rtn = new ArrayList<>();
+		for (Venta venta : ventas) {
+			if (!(venta.getConfirmado())) {
+				rtn.add(venta);
+			}
+		}
+		return rtn;
+	}
+	
+	public ArrayList<Subasta> getSubastasSinConfirmar() {
+		ArrayList<Subasta> rtn = new ArrayList<>();
+		
+		for ( Subasta subasta : subastasFinalizadas) {
+			if (!(subasta.getConfirmado())) {
+				rtn.add(subasta);
+			}
+		}
+		return rtn;
+	}
 	
 }

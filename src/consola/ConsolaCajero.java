@@ -9,15 +9,15 @@ import java.util.Scanner;
 
 public class ConsolaCajero {
 	
-	static Galeria galeria;
+
 	
 	ConsolaCajero(Galeria galeria_) {
-		galeria = galeria_;
+
 	}
 	
 	
 	
-	public static void printMenu(Cajero cajero, Scanner scanner) throws FileNotFoundException {
+	public static void printMenu(Cajero cajero, Scanner scanner, Galeria galeria) throws FileNotFoundException {
 
 		String accion = "";
 		while (!(accion.equals("2"))) {

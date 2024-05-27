@@ -95,10 +95,15 @@ public class PersistenciaUsuarios
 			String email = JCliente.getString("Email");
         	Integer ID =JCliente.getInt("Id");
         	double monto = JCliente.getDouble("Monto");
+        	boolean verificar = JCliente.getBoolean("Verificar");
         	
         	Cliente cliente = new Cliente(nombre, contraseña, tipo, telefono, email, ID);
         	
         	cliente.setMonto(monto);
+        	
+        	if (verificar) {
+        		cliente.setVerificar();
+        	}
         	
         	JSONArray piezasCompradas = (JSONArray) JCliente.get("PiezasCompradas");
         	for (Object Opieza : piezasCompradas) 
@@ -227,6 +232,7 @@ public class PersistenciaUsuarios
 				jPiezas.put (pieza);
 			}
 			jCliente.put( "PiezasCompradas", jPiezas );
+			jCliente.put( "Verificar", false);
 			
             jClientes.put( jCliente );
         }

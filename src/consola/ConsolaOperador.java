@@ -12,14 +12,12 @@ import java.time.format.DateTimeFormatter;
 
 public class ConsolaOperador {
 	
-	static Galeria galeria;
 	
 	ConsolaOperador(Galeria galeria_) {
-		galeria = galeria_;
 	}
 	
 
-	public static void printMenu(Operador operador, Scanner scanner) throws FileNotFoundException {
+	public static void printMenu(Operador operador, Scanner scanner, Galeria galeria) throws FileNotFoundException {
 
 		System.out.println("Bienvenido " + operador.getNombre() + "!");
 		String accion = "";
