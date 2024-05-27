@@ -22,7 +22,7 @@ public abstract class Pieza
 	private double precio;
 	private double precioMinimo;
 	private String fechaDePrestamo;
-	private Map<Cliente,Venta> historial;
+
 	
 	
 	public Pieza(String autores,String fecha,String origen,String descripcion,double precio,String fechaP,String titulo,
@@ -39,7 +39,7 @@ public abstract class Pieza
 		subastable = false;
 		disponible = false;
 		this.precioMinimo = minPrecio;
-		historial = new HashMap<Cliente, Venta>();
+
 	}
 
 	public String getId() 
@@ -132,11 +132,7 @@ public abstract class Pieza
 		return tipo;
 	}
 	
-
-	public Map<Cliente, Venta> getHistorial() 
-	{
-		return historial;
-	}
+	
 
 	public void cambiarDisponibilidad()
 	{
@@ -162,11 +158,6 @@ public abstract class Pieza
 		}
 	}
 	
-	public void añadirAlHistorial(Venta venta) 
-	{
-		Cliente comprador = venta.getComprador();
-		
-		this.historial.put(comprador, venta);
-	}
+
 	
 }

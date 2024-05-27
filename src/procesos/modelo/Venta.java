@@ -2,6 +2,7 @@ package procesos.modelo;
 
 import inventario.modelo.Pieza;
 import usuarios.modelo.Administrador;
+import usuarios.modelo.Cajero;
 import usuarios.modelo.Cliente;
 import usuarios.modelo.Empleado;
 
@@ -18,24 +19,20 @@ public class Venta
 	
 	private String medioDePago;
 	
-	private Cliente comprador;
+	private Integer idComprador;
 	
 	
 	
-	public Venta(Pieza pieza, double precio, Empleado empleado, Administrador admin, String medioDePago, Cliente comprador) 
+	public Venta(Pieza pieza, double precio, Empleado empleado, Administrador admin, String medioDePago, Integer integer) 
 	{
 		this.pieza = pieza;
 		this.precio = precio;
 		this.empleado = empleado;
 		this.admin = admin;
 		this.medioDePago = medioDePago;	
-		this.comprador = comprador;
+		this.idComprador = integer;
 	}
 
-
-	/**
-	 * @return the pieza
-	 */
 	public Pieza getPieza() {
 		return pieza;
 	}
@@ -76,8 +73,8 @@ public class Venta
 	/**
 	 * @return the comprador
 	 */
-	public Cliente getComprador() {
-		return comprador;
+	public Integer getIdComprador() {
+		return idComprador;
 	}
 
 

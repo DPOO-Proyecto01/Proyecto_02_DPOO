@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +28,8 @@ public class PersistenciaUsuarios
 {
 	public void cargarUsuarios (String archivo, Galeria galeria) throws IOException
 	{
-		String jsonCompleto = new String( Files.readAllBytes( new File( archivo ).toPath( ) ) );
+		
+		String jsonCompleto = new String( Files.readAllBytes( Path.of(archivo)));
         JSONObject raiz = new JSONObject( jsonCompleto );
 		AdministradorUsuarios adminU = galeria.getAdminUsuarios();
 

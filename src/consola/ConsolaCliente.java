@@ -17,8 +17,8 @@ public class ConsolaCliente {
 		galeria = galeria_;
 	}
 	
-	public static void printMenu(Cliente usuario) {
-		Scanner scanner = new Scanner(System.in);
+	public static void printMenu(Cliente usuario, Scanner scanner) {
+
 		String line = "-".repeat(24);
 		String accion = "";
 		while (!(accion.equals("5"))) {
@@ -32,7 +32,7 @@ public class ConsolaCliente {
 			accion = scanner.nextLine();
 			
 			if (accion.equals("1")) {
-				printPerfil(usuario);
+				printPerfil(usuario, scanner);
 			} else if (accion.equals("2")) {
 				Map<String, Pieza> piezasEnVenta = galeria.getInventario().piezasEnVenta();
 				for (Map.Entry<String, Pieza> entry : piezasEnVenta.entrySet()) {
@@ -78,11 +78,10 @@ public class ConsolaCliente {
 			}
 			
 		}
-		scanner.close();
 	}
 	
-	public static void printPerfil(Cliente usuario) {
-		Scanner scanner = new Scanner(System.in);
+	public static void printPerfil(Cliente usuario, Scanner scanner) {
+
 		System.out.println("Username:");
 		System.out.println(usuario.getNombre());
 		System.out.println("Constraseña:");
@@ -95,12 +94,14 @@ public class ConsolaCliente {
 		System.out.println(usuario.getMonto());
 		String accion = "";
 		List<Pieza> listaCompras = usuario.getPiezasCompradas();
-		System.out.println("Que desea hacer?");
-		System.out.println("1. Consultar historial de compras");
-		System.out.println("2. Aumentar monto");
-		System.out.println("3. Salir");
+
 		
 		while (!(accion.equals("3"))) {
+			System.out.println("Que desea hacer?");
+			System.out.println("1. Consultar historial de compras");
+			System.out.println("2. Aumentar monto");
+			System.out.println("3. Salir");
+			
 			accion = scanner.nextLine();
 			
 			if (accion.equals("1")) {
@@ -123,7 +124,5 @@ public class ConsolaCliente {
 				usuario.setMonto(monto+cantidad);
 			}
 		}
-		
-		scanner.close();
 	}
 }

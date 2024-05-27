@@ -31,24 +31,28 @@ public class ConsolaLogin {
 	}
 	
 	private static Galeria cargaDeDatos() throws IOException {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Ingrese la ruta del proyecto:");
-		ruta = scanner.nextLine();
+		
 		inventario = new Inventario();
 		adminProcesos = new AdministradorProcesos();
 		adminUsuarios = new AdministradorUsuarios();
 		galeria = new Galeria(inventario, adminProcesos, adminUsuarios);
 		
-		CentralPersistencia.getPersistenciaUsuarios().cargarUsuarios("usuarios", galeria);
-		CentralPersistencia.getPersistenciaProcesos().cargarProcesos(ruta + "/src/data/procesos", galeria);
-		CentralPersistencia.getPersistenciaInventario().cargarInventario(ruta + "/src/data/inventario", galeria);
-		scanner.close();
+		CentralPersistencia.getPersistenciaUsuarios().cargarUsuarios("/Users/andrestello/Desktop/DPOOProyecto2/Proyecto_02_DPOO/src/data/usuarios.json", galeria);
+		CentralPersistencia.getPersistenciaInventario().cargarInventario("/Users/andrestello/Desktop/DPOOProyecto2/Proyecto_02_DPOO/src/data/inventario.json", galeria);
+		CentralPersistencia.getPersistenciaProcesos().cargarProcesos("/Users/andrestello/Desktop/DPOOProyecto2/Proyecto_02_DPOO/src/data/procesos.json", galeria);
+
+		
 		return galeria;
 	}
 	
 	public static void printMenu() throws FileNotFoundException {
 		Scanner scanner = new Scanner(System.in);
 		String accion = "0";
+		
+		CentralPersistencia.getPersistenciaInventario().guardarInventario("/Users/andrestello/Desktop/DPOOProyecto2/Proyecto_02_DPOO/src/data/inventario.json", galeria);
+		CentralPersistencia.getPersistenciaProcesos().guardarProcesos("/Users/andrestello/Desktop/DPOOProyecto2/Proyecto_02_DPOO/src/data/procesos.json", galeria);
+		CentralPersistencia.getPersistenciaUsuarios().guardarUsuarios("/Users/andrestello/Desktop/DPOOProyecto2/Proyecto_02_DPOO/src/data/usuarios.json", galeria);
+		
 		while (!(accion.equals("3"))) {
 			System.out.println("Bienvenido a nuestra galeria!");
 			System.out.println("Que desea hacer?");
@@ -58,52 +62,58 @@ public class ConsolaLogin {
 			accion = scanner.nextLine();
 			
 			if (accion.equals("1")) {
-				Login();
+				Login(scanner);
 			} else if (accion.equals("2")) {
-				Registrar();
+				Registrar(scanner);
 			} 
-			CentralPersistencia.getPersistenciaInventario().guardarInventario(ruta + "/src/data/usuarios", galeria);
-			CentralPersistencia.getPersistenciaProcesos().guardarProcesos(ruta + "/src/data/usuarios", galeria);
-			CentralPersistencia.getPersistenciaUsuarios().guardarUsuarios(ruta + "/src/data/usuarios", galeria);
+			
 		}
 		scanner.close();
 	}
 	
-	public static void Login() throws FileNotFoundException {
-		Scanner scanner = new Scanner(System.in);
+	public static void Login(Scanner scanner) throws FileNotFoundException {
 		
 		System.out.println("Por favor ingrese su tipo de usuario para hacer Login:");
 		System.out.println("1. Soy un Cliente");
 		System.out.println("2. Soy un Cajero");
 		System.out.println("3. Soy un Operador");
 		System.out.println("4. Soy un Administrador");
-		String tipo = scanner.nextLine();
+		String tipo1 = scanner.nextLine();
 		
 		System.out.println("Username:");
 		String username = scanner.nextLine();
 		
 		System.out.println("Contraseña:");
 		String contrasena = scanner.nextLine();
+		String tipo = null;
+		if (tipo1.equals("1")) {
+			tipo = "Cliente";
+		} else if (tipo1.equals("2")) {
+			tipo = "Cajero";
+		} else if (tipo1.equals("3")) {
+			tipo = "Operado";
+		} else if (tipo1.equals("3")) {
+			tipo = "Administrador";
+		}
 		
 		if (galeria.getAdminUsuarios().logIn(username, contrasena, tipo)) {
-			if (tipo.equals("1")) {
+			if (tipo1.equals("1")) {
 				Cliente usuario = galeria.getAdminUsuarios().buscarCliente(username);
-				ConsolaCliente.printMenu(usuario);
-			} else if (tipo.equals("2")) {
+				ConsolaCliente.printMenu(usuario, scanner);
+			} else if (tipo1.equals("2")) {
 				Cajero cajero = galeria.getAdminUsuarios().buscarCajero(username);
-				ConsolaCajero.printMenu(cajero);
-			} else if (tipo.equals("3")) {
+				ConsolaCajero.printMenu(cajero, scanner);
+			} else if (tipo1.equals("3")) {
 				Operador operador = galeria.getAdminUsuarios().buscarOperador(username);
-				ConsolaOperador.printMenu(operador);
-			} else if (tipo.equals("4")) {
+				ConsolaOperador.printMenu(operador, scanner);
+			} else if (tipo1.equals("4")) {
 				ConsolaAdministrador.printMenu();
 			}
 		}
-		scanner.close();
 	}
 	
-	public static void Registrar() {
-		Scanner scanner = new Scanner(System.in);
+	public static void Registrar(Scanner scanner) {
+
 		System.out.println("Username:");
 		String username = scanner.nextLine();
 		
@@ -119,11 +129,12 @@ public class ConsolaLogin {
 		
 		if (tipo.equals("1")) {
 			System.out.println("Numero de telefono:");
-			int telefono1 = scanner.nextInt();
+			String telefono1 = scanner.nextLine();
 			Integer telefono = Integer.valueOf(telefono1);
 			
 			System.out.println("Ingrese su correo electronico:");
 			String email = scanner.nextLine();
+			
 			
 			Cliente cliente = new Cliente(username, contrasenia, "", telefono, email, null);
 			galeria.getAdminUsuarios().agregarCliente(cliente);
@@ -140,8 +151,6 @@ public class ConsolaLogin {
 			Administrador admin = new Administrador(username, contrasenia, "", null);
 			galeria.getAdminUsuarios().agregarAdministrador(admin);
 		}
-		
-		scanner.close();
 	}
 	
 	public static void main(String[] args) throws IOException {

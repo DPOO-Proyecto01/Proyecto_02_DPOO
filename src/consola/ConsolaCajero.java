@@ -17,8 +17,8 @@ public class ConsolaCajero {
 	
 	
 	
-	public static void printMenu(Cajero cajero) throws FileNotFoundException {
-		Scanner scanner = new Scanner(System.in);
+	public static void printMenu(Cajero cajero, Scanner scanner) throws FileNotFoundException {
+
 		String accion = "";
 		while (!(accion.equals("2"))) {
 			System.out.println("-".repeat(24));
@@ -46,7 +46,7 @@ public class ConsolaCajero {
 							Administrador admin = galeria.getAdminUsuarios().buscarAdmin(nomAdmin);
 							
 							if (!(admin.equals(null))) {
-								Venta venta = new Venta(pieza, pieza.getPrecio(), cajero, admin, metodo, cliente);
+								Venta venta = new Venta(pieza, pieza.getPrecio(), cajero, admin, metodo, cliente.getID());
 								galeria.getAdminProcesos().añadirVenta(venta);
 						} else {System.out.println("No se encontro el administrador, vuelva a intentarlo");}
 						
@@ -60,7 +60,6 @@ public class ConsolaCajero {
 		
 		}
 		CentralPersistencia.getPersistenciaProcesos().guardarProcesos("./data/procesos", galeria);
-		scanner.close();
 	}
 
 

@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,8 +19,10 @@ import procesos.modelo.AdministradorProcesos;
 import procesos.modelo.Subasta;
 import procesos.modelo.Venta;
 import usuarios.modelo.Administrador;
+import usuarios.modelo.AdministradorUsuarios;
 import usuarios.modelo.Cliente;
 import usuarios.modelo.Empleado;
+import inventario.modelo.Inventario;
 
 public class PersistenciaProcesos 
 {
@@ -46,12 +49,14 @@ public class PersistenciaProcesos
 	
 	public void cargarProcesos (String archivo, Galeria galeria) throws IOException
 	{
-		String jsonCompleto = new String( Files.readAllBytes( new File( archivo ).toPath( ) ) );
+		Inventario inventario = galeria.getInventario();
+		String jsonCompleto = new String( Files.readAllBytes( Path.of(archivo) ) );
         JSONObject raiz = new JSONObject( jsonCompleto );
 		AdministradorProcesos adminP = galeria.getAdminProcesos();
+		AdministradorUsuarios adminU = galeria.getAdminUsuarios();
 
 
-        cargarVentas( adminP, raiz.getJSONArray( "Ventas" ) );
+        cargarVentas( adminP, raiz.getJSONArray( "Ventas" ), inventario, adminU );
         cargarSubastasEnProceso( adminP, raiz.getJSONArray( "SubastasEnProceso" ) );
         cargarSubastasFinalizadas( adminP, raiz.getJSONArray( "SubastasFinalizadas" ) );
 	}
@@ -65,7 +70,7 @@ public class PersistenciaProcesos
             JSONObject jventa = new JSONObject( );
             jventa.put( "Pieza", venta.getPieza() );
             jventa.put( "Precio", venta.getPrecio());
-            jventa.put( "Comprador", venta.getComprador() );
+            jventa.put( "Comprador", venta.getIdComprador() );
             jventa.put( "MedioDePago", venta.getMedioDePago() );
             jventa.put( "Empleado", venta.getEmpleado() );
             jventa.put( "Administrador", venta.getAdmin() );
@@ -132,21 +137,21 @@ public class PersistenciaProcesos
 
 	}
 	
-	private void cargarVentas(AdministradorProcesos adminp, JSONArray jVentas) 
+	private void cargarVentas(AdministradorProcesos adminp, JSONArray jVentas, Inventario inventario, AdministradorUsuarios adminU) 
 	{
 		int numVentas = jVentas.length( );
         for( int i = 0; i < numVentas; i++ ) 
         {
         	JSONObject venta = jVentas.getJSONObject( i );
         	
-        	Pieza pieza = (Pieza) venta.get("Pieza");
+        	String idPieza = (String) venta.get("IdPieza");
         	double precio = venta.getDouble("Precio");
-        	Empleado empleado = (Empleado) venta.get("Empleado");
-        	Administrador admin = (Administrador) venta.get("Administrador");
+        	String empleado = (String) venta.get("NombreEmpleado");
+        	String admin = (String) venta.get("NombreAdministrador");
         	String medioDePago = venta.getString("MedioDePago");
-        	Cliente comprador = (Cliente) venta.get("Comprador");
+        	Integer comprador =  (Integer) venta.get("idComprador");
         	
-        	Venta Venta = new Venta(pieza, precio, empleado, admin, medioDePago, comprador);
+        	Venta Venta = new Venta(inventario.buscarPieza(idPieza), precio, adminU.buscarCajero(empleado), adminU.buscarAdmin(admin), medioDePago, comprador);
             adminp.añadirVenta(Venta);
         }
 	}

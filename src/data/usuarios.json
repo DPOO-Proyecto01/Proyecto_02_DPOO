@@ -1,0 +1,40 @@
+{
+  "Administradores": [{
+    "Nombre": "ejemplo administrador",
+    "Tipo": "Administrador",
+    "Id": 0,
+    "Contraseña": "123456"
+  }],
+  "Cajeros": [{
+    "Nombre": "ejemplo cajero",
+    "Tipo": "Cajero",
+    "Id": 3,
+    "Contraseña": "123456",
+    "Rol": "Cajero"
+  }],
+  "Operadores": [{
+    "Nombre": "ejemplo operador",
+    "Tipo": "Operador",
+    "Id": 0,
+    "Contraseña": "123456",
+    "Rol": "Operador"
+  }],
+  "ListaIds": [
+    0,
+    1,
+    2,
+    3,
+    1,
+    1
+  ],
+  "Clientes": [{
+    "Nombre": "andres",
+    "Tipo": "Cliente",
+    "Email": "at",
+    "Telefono": 1234567890,
+    "Monto": 0,
+    "PiezasCompradas": [],
+    "Id": 0,
+    "Contraseña": "123"
+  }]
+}

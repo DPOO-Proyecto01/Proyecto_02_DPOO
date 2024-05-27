@@ -19,8 +19,8 @@ public class ConsolaOperador {
 	}
 	
 
-	public static void printMenu(Operador operador) throws FileNotFoundException {
-		Scanner scanner = new Scanner(System.in);
+	public static void printMenu(Operador operador, Scanner scanner) throws FileNotFoundException {
+
 		System.out.println("Bienvenido " + operador.getNombre() + "!");
 		String accion = "";
 		while (!(accion.equals("2"))) {
@@ -53,7 +53,6 @@ public class ConsolaOperador {
 			}
 		}
 		CentralPersistencia.getPersistenciaProcesos().guardarProcesos("./data/procesos", galeria);
-		scanner.close();
 	}
 
 

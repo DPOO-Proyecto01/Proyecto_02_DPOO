@@ -171,7 +171,7 @@ public class AdministradorUsuarios
 	public boolean logIn(String username, String password, String tipo) {
 		HashMap<Integer, ? extends Usuario> mapa;
 		
-		if (tipo.equals("Clientes")) 
+		if (tipo.equals("Cliente")) 
 		{
 			mapa = clientes;
 		} else if (tipo.equals("Cajero"))

@@ -75,10 +75,10 @@ public class AdministradorProcesos
 		
 	}
 	
-	public void generarVenta (Cliente cliente, Pieza pieza, String medioDePago, Empleado empleado, Administrador admin) 
+	public void generarVenta (Integer idCliente, Pieza pieza, String medioDePago, Empleado empleado, Administrador admin) 
 	{
 		double precio = pieza.getPrecio();
-		Venta venta = new Venta(pieza, precio, empleado, admin, medioDePago, cliente);
+		Venta venta = new Venta(pieza, precio, empleado, admin, medioDePago, idCliente);
 		this.ventas.add(venta);
 	}
 	

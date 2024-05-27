@@ -91,13 +91,6 @@ public class PersistenciaInventario
 			jPieza.put( "precioMinimo", pieza.getPrecioMinimo() );
 			jPieza.put( "fechaDePrestamo", pieza.getFechaDePrestamo());
 			
-			JSONArray jHistorial = new JSONArray( );
-			Map<Cliente,Venta> historial = pieza.getHistorial();
-			for (Venta venta : historial.values()) 
-			{
-				jHistorial.put (venta);
-			}
-			jPieza.put( "historial", jHistorial );
 			
 			if (tipo.equalsIgnoreCase("Escultura")) 
 			{
@@ -150,14 +143,7 @@ public class PersistenciaInventario
 			jPieza.put( "precio", pieza.getPrecio() );
 			jPieza.put( "precioMinimo", pieza.getPrecioMinimo() );
 			jPieza.put( "fechaDePrestamo", pieza.getFechaDePrestamo());
-			
-			JSONArray jHistorial = new JSONArray( );
-			Map<Cliente,Venta> historial = pieza.getHistorial();
-			for (Venta venta : historial.values()) 
-			{
-				jHistorial.put (venta);
-			}
-			jPieza.put( "historial", jHistorial );
+
 			
 			if (tipo.equalsIgnoreCase("Escultura")) 
 			{
@@ -211,13 +197,7 @@ public class PersistenciaInventario
 			jPieza.put( "precioMinimo", pieza.getPrecioMinimo() );
 			jPieza.put( "fechaDePrestamo", pieza.getFechaDePrestamo());
 			
-			JSONArray jHistorial = new JSONArray( );
-			Map<Cliente,Venta> historial = pieza.getHistorial();
-			for (Venta venta : historial.values()) 
-			{
-				jHistorial.put (venta);
-			}
-			jPieza.put( "historial", jHistorial );
+
 			
 			if (tipo.equalsIgnoreCase("Escultura")) 
 			{
@@ -271,13 +251,7 @@ public class PersistenciaInventario
 			jPieza.put( "precioMinimo", pieza.getPrecioMinimo() );
 			jPieza.put( "fechaDePrestamo", pieza.getFechaDePrestamo());
 			
-			JSONArray jHistorial = new JSONArray( );
-			Map<Cliente,Venta> historial = pieza.getHistorial();
-			for (Venta venta : historial.values()) 
-			{
-				jHistorial.put (venta);
-			}
-			jPieza.put( "historial", jHistorial );
+
 			
 			if (tipo.equalsIgnoreCase("Escultura")) 
 			{
@@ -330,14 +304,7 @@ public class PersistenciaInventario
 			jPieza.put( "precio", pieza.getPrecio() );
 			jPieza.put( "precioMinimo", pieza.getPrecioMinimo() );
 			jPieza.put( "fechaDePrestamo", pieza.getFechaDePrestamo());
-			
-			JSONArray jHistorial = new JSONArray( );
-			Map<Cliente,Venta> historial = pieza.getHistorial();
-			for (Venta venta : historial.values()) 
-			{
-				jHistorial.put (venta);
-			}
-			jPieza.put( "historial", jHistorial );
+
 			
 			if (tipo.equalsIgnoreCase("Escultura")) 
 			{
@@ -391,13 +358,7 @@ public class PersistenciaInventario
 			jPieza.put( "precioMinimo", pieza.getPrecioMinimo() );
 			jPieza.put( "fechaDePrestamo", pieza.getFechaDePrestamo());
 			
-			JSONArray jHistorial = new JSONArray( );
-			Map<Cliente,Venta> historial = pieza.getHistorial();
-			for (Venta venta : historial.values()) 
-			{
-				jHistorial.put (venta);
-			}
-			jPieza.put( "historial", jHistorial );
+
 			
 			if (tipo.equalsIgnoreCase("Escultura")) 
 			{
@@ -471,13 +432,6 @@ public class PersistenciaInventario
         	{
         		Escultura pieza = null;
         		pieza = (Escultura) cargarEscultura(JPieza, pieza);
-        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
-            	for (Object OVenta : Ventas) 
-            	{
-            		Venta venta = (Venta) OVenta;
-            		pieza.añadirAlHistorial(venta);;
-            	}
-            	
             	inventario.añadirAExhibicion(pieza);
         		
         	}
@@ -485,25 +439,13 @@ public class PersistenciaInventario
 			{
         		Pintura pieza = null;
         		pieza = (Pintura) cargarPintura(JPieza, pieza);
-        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
-            	for (Object OVenta : Ventas) 
-            	{
-            		Venta venta = (Venta) OVenta;
-            		pieza.añadirAlHistorial(venta);;
-            	}
-            	
+
             	inventario.añadirAExhibicion(pieza);
 			}
         	else if (tipo.equalsIgnoreCase("Video")) 
         	{
         		Video pieza = null;
         		pieza = (Video) cargarVideo(JPieza, pieza);
-        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
-            	for (Object OVenta : Ventas) 
-            	{
-            		Venta venta = (Venta) OVenta;
-            		pieza.añadirAlHistorial(venta);;
-            	}
             	
             	inventario.añadirAExhibicion(pieza);
         	}
@@ -525,12 +467,6 @@ public class PersistenciaInventario
         	{
         		Escultura pieza = null;
         		pieza = (Escultura) cargarEscultura(JPieza, pieza);
-        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
-            	for (Object OVenta : Ventas) 
-            	{
-            		Venta venta = (Venta) OVenta;
-            		pieza.añadirAlHistorial(venta);;
-            	}
             	
             	inventario.añadirABodega(pieza);
         		
@@ -539,12 +475,6 @@ public class PersistenciaInventario
 			{
         		Pintura pieza = null;
         		pieza = (Pintura) cargarPintura(JPieza, pieza);
-        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
-            	for (Object OVenta : Ventas) 
-            	{
-            		Venta venta = (Venta) OVenta;
-            		pieza.añadirAlHistorial(venta);;
-            	}
             	
             	inventario.añadirABodega(pieza);
 			}
@@ -552,12 +482,6 @@ public class PersistenciaInventario
         	{
         		Video pieza = null;
         		pieza = (Video) cargarVideo(JPieza, pieza);
-        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
-            	for (Object OVenta : Ventas) 
-            	{
-            		Venta venta = (Venta) OVenta;
-            		pieza.añadirAlHistorial(venta);;
-            	}
             	
             	inventario.añadirABodega(pieza);
         	}
@@ -579,13 +503,6 @@ public class PersistenciaInventario
         	{
         		Escultura pieza = null;
         		pieza = (Escultura) cargarEscultura(JPieza, pieza);
-
-            	JSONArray Ventas = (JSONArray) JPieza.get("historial");
-            	for (Object OVenta : Ventas) 
-            	{
-            		Venta venta = (Venta) OVenta;
-            		pieza.añadirAlHistorial(venta);;
-            	}
             	
             	inventario.añadirADevolucion(pieza);
         		
@@ -594,13 +511,6 @@ public class PersistenciaInventario
 			{
         		Pintura pieza = null;
         		pieza = (Pintura) cargarPintura(JPieza, pieza);
-
-            	JSONArray Ventas = (JSONArray) JPieza.get("historial");
-            	for (Object OVenta : Ventas) 
-            	{
-            		Venta venta = (Venta) OVenta;
-            		pieza.añadirAlHistorial(venta);;
-            	}
             	
             	inventario.añadirADevolucion(pieza);
 			}
@@ -608,13 +518,6 @@ public class PersistenciaInventario
         	{
         		Video pieza = null;
         		pieza = (Video) cargarVideo(JPieza, pieza);
-
-            	JSONArray Ventas = (JSONArray) JPieza.get("historial");
-            	for (Object OVenta : Ventas) 
-            	{
-            		Venta venta = (Venta) OVenta;
-            		pieza.añadirAlHistorial(venta);;
-            	}
             	
             	inventario.añadirADevolucion(pieza);
         	}
@@ -636,12 +539,6 @@ public class PersistenciaInventario
         	{
         		Escultura pieza = null;
         		pieza = (Escultura) cargarEscultura(JPieza, pieza);
-        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
-            	for (Object OVenta : Ventas) 
-            	{
-            		Venta venta = (Venta) OVenta;
-            		pieza.añadirAlHistorial(venta);;
-            	}
             	
             	inventario.añadirAEnVenta(pieza);
         		
@@ -650,12 +547,6 @@ public class PersistenciaInventario
 			{
         		Pintura pieza = null;
         		pieza = (Pintura) cargarPintura(JPieza, pieza);
-        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
-            	for (Object OVenta : Ventas) 
-            	{
-            		Venta venta = (Venta) OVenta;
-            		pieza.añadirAlHistorial(venta);;
-            	}
             	
             	inventario.añadirAEnVenta(pieza);
 			}
@@ -663,12 +554,6 @@ public class PersistenciaInventario
         	{
         		Video pieza = null;
         		pieza = (Video) cargarVideo(JPieza, pieza);
-        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
-            	for (Object OVenta : Ventas) 
-            	{
-            		Venta venta = (Venta) OVenta;
-            		pieza.añadirAlHistorial(venta);;
-            	}
             	
             	inventario.añadirAEnVenta(pieza);
         	}
@@ -690,12 +575,6 @@ public class PersistenciaInventario
         	{
         		Escultura pieza = null;
         		pieza = (Escultura) cargarEscultura(JPieza, pieza);
-        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
-            	for (Object OVenta : Ventas) 
-            	{
-            		Venta venta = (Venta) OVenta;
-            		pieza.añadirAlHistorial(venta);;
-            	}
             	
             	inventario.añadirASubastas(pieza);
         		
@@ -704,12 +583,6 @@ public class PersistenciaInventario
 			{
         		Pintura pieza = null;
         		pieza = (Pintura) cargarPintura(JPieza, pieza);
-        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
-            	for (Object OVenta : Ventas) 
-            	{
-            		Venta venta = (Venta) OVenta;
-            		pieza.añadirAlHistorial(venta);;
-            	}
             	
             	inventario.añadirASubastas(pieza);
 			}
@@ -717,12 +590,6 @@ public class PersistenciaInventario
         	{
         		Video pieza = null;
         		pieza = (Video) cargarVideo(JPieza, pieza);
-        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
-            	for (Object OVenta : Ventas) 
-            	{
-            		Venta venta = (Venta) OVenta;
-            		pieza.añadirAlHistorial(venta);;
-            	}
             	
             	inventario.añadirASubastas(pieza);
         	}
@@ -746,12 +613,7 @@ public class PersistenciaInventario
         		
         		Escultura pieza = null;
         		pieza = (Escultura) cargarEscultura(JPieza, pieza);
-        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
-            	for (Object OVenta : Ventas) 
-            	{
-            		Venta venta = (Venta) OVenta;
-            		pieza.añadirAlHistorial(venta);;
-            	}
+
             	inventario.añadirAPasadas(pieza);
         		
         	}
@@ -759,24 +621,13 @@ public class PersistenciaInventario
 			{
         		Pintura pieza = null;
         		pieza = (Pintura) cargarPintura(JPieza, pieza);
-        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
-            	for (Object OVenta : Ventas) 
-            	{
-            		Venta venta = (Venta) OVenta;
-            		pieza.añadirAlHistorial(venta);;
-            	}
+
             	inventario.añadirAPasadas(pieza);
 			}
         	else if (tipo.equalsIgnoreCase("Video")) 
         	{
         		Video pieza = null;
         		pieza = (Video) cargarVideo(JPieza, pieza);
-        		JSONArray Ventas = (JSONArray) JPieza.get("historial");
-            	for (Object OVenta : Ventas) 
-            	{
-            		Venta venta = (Venta) OVenta;
-            		pieza.añadirAlHistorial(venta);
-            	}
             	
             	inventario.añadirAPasadas(pieza);
             	
