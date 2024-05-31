@@ -95,7 +95,7 @@ public class PersistenciaUsuarios
 			String email = JCliente.getString("Email");
         	Integer ID =JCliente.getInt("Id");
         	double monto = JCliente.getDouble("Monto");
-        	boolean verificar = JCliente.getBoolean("Verificar");
+        	boolean verificar = false;
         	
         	Cliente cliente = new Cliente(nombre, contraseña, tipo, telefono, email, ID);
         	
@@ -232,7 +232,6 @@ public class PersistenciaUsuarios
 				jPiezas.put (pieza);
 			}
 			jCliente.put( "PiezasCompradas", jPiezas );
-			jCliente.put( "Verificar", false);
 			
             jClientes.put( jCliente );
         }
