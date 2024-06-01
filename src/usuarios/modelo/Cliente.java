@@ -1,5 +1,15 @@
 package usuarios.modelo;
 import java.util.ArrayList;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import inventario.modelo.Pieza;
 
 public class Cliente extends Usuario
@@ -64,4 +74,27 @@ public class Cliente extends Usuario
 		verificar = true;
 	}
 
+	public void crearRastro (String nombre, String fechaNacimiento, String tipoDocumento, String numeroDocumento, String direccion, String numeroTarjeta, boolean credito, String nombreBanco) throws IOException {
+		
+		String pathProyecto = Paths.get("").toAbsolutePath().toString();
+		String path = pathProyecto.replaceFirst("/usuarios/modelo/Cliente.java", "data/Rastros/");
+		String tipoTarjeta = "Debito";
+		if (credito) {
+			tipoTarjeta = "Credito";
+		}
+		LocalDateTime dateTime =  LocalDateTime.now();
+		DateTimeFormatter formatter =  DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		String finalDateTime = dateTime.format(formatter);
+		String contenido = "Registro aumento monto \n" + "=".repeat(32) + "\n" + "Fecha y Hora: " + finalDateTime + "\n" + "Nombre: " + nombre + "\n" + "Email: " + email + "\n" + "Numero telefonico/celular: " + telefono + "\n" + "Fecha de Nacimiento: " + fechaNacimiento + "\n" + "Tipo de Documento: " + tipoDocumento + "\n" + "Numero de Documento: " + numeroDocumento + "\n" + "Direccion: " + direccion + "\n" + "Numero de Tarjeta: " + numeroTarjeta + "\n" + "Tipo de Tarjeta: " + tipoTarjeta + "\n" + "Banco: " + nombreBanco; 
+		String fileName = nombre + "_DT_" + finalDateTime;
+		
+		File file = new File(path, fileName);
+		
+		BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+		writer.write(contenido);
+		writer.close();
+		
+		
+		
+	}
 }

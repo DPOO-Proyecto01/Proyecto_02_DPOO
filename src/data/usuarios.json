@@ -35,6 +35,7 @@
     "Monto": 0,
     "PiezasCompradas": [],
     "Id": 0,
-    "Contraseña": "123"
+    "Contraseña": "123",
+    "Verificar": false
   }]
 }
