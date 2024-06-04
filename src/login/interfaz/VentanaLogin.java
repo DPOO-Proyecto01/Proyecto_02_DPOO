@@ -43,7 +43,6 @@ public class VentanaLogin extends JFrame
 	static AdministradorUsuarios adminUsuarios;
 	static String ruta;
 	
-	private JDialog dialog;
 	
 	private Galeria galeria;
 
@@ -101,7 +100,7 @@ public class VentanaLogin extends JFrame
 		return galeria;
 	}
 	
-	private void guardarAplicacion() throws FileNotFoundException 
+	public void guardarAplicacion() throws FileNotFoundException 
 	{
 		CentralPersistencia.getPersistenciaInventario().guardarInventario("C:/Users/elica/git/Proyecto_02_DPOO/src/data/inventario.json", galeria);
 		CentralPersistencia.getPersistenciaProcesos().guardarProcesos("C:/Users/elica/git/Proyecto_02_DPOO/src/data/procesos.json", galeria);
@@ -117,26 +116,26 @@ public class VentanaLogin extends JFrame
 			if (tipo.equalsIgnoreCase("Cliente")) 
 			{
 				Cliente usuario = galeria.getAdminUsuarios().buscarCliente(username);
-				JFrame Vcliente = new VentanaCliente();
+				new VentanaCliente(galeria, usuario, this);
 				this.setVisible(false);
 				
 			} 
 			else if (tipo.equalsIgnoreCase("Cajero")) 
 			{
 				Cajero cajero = galeria.getAdminUsuarios().buscarCajero(username);
-				JFrame Vcajero = new VentanaCajero();
+				new VentanaCajero(galeria, cajero, this);
 				this.setVisible(false);
 			} 
 			else if (tipo.equalsIgnoreCase("Operador")) 
 			{
 				Operador operador = galeria.getAdminUsuarios().buscarOperador(username);
-				JFrame Voperador = new VentanaOperador();
+				new VentanaOperador(galeria, operador, this);
 				this.setVisible(false);
 			} 
 			else if (tipo.equalsIgnoreCase("Administrador")) 
 			{
 				Administrador administrador = galeria.getAdminUsuarios().buscarAdmin(username);
-				JFrame Vadministrador = new VentanaAdministrador();
+				new VentanaAdministrador(galeria, administrador, this);
 				this.setVisible(false);
 			}
 		}
@@ -144,7 +143,7 @@ public class VentanaLogin extends JFrame
 	
 	public void btnregistrarse() 
 	{
-		dialog = new RegisterDialog(this);
+		new RegisterDialog(this);
 	}
 	
 	public void RegistroCliente(String username, String contrasenia, String telefono, String email ) 

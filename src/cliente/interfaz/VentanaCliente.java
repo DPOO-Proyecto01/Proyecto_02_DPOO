@@ -1,21 +1,27 @@
 package cliente.interfaz;
 
 import java.awt.BorderLayout;
+import java.io.FileNotFoundException;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import inventario.modelo.Galeria;
+import login.interfaz.VentanaLogin;
+import usuarios.modelo.Cliente;
 
 public class VentanaCliente extends JFrame
 {
-	private JPanel panelS;
-	private JPanel panelC;
-	private JPanel panelI;
+	private PanelSuperiorCliente panelS;
+	private PanelCentralCliente panelC;
+	private PanelInferiorCliente panelI;
 	
 	private Galeria galeria;
+	private Cliente cliente;
+	private VentanaLogin ventanaL;
 	
-	public VentanaCliente() 
+	public VentanaCliente(Galeria galeria, Cliente cliente, VentanaLogin ventanaL) 
 	{
 		setTitle("Galeria");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -37,6 +43,16 @@ public class VentanaCliente extends JFrame
 	
 	public void cerrarSesion() 
 	{
+		try 
+		{
+			ventanaL.guardarAplicacion();
+		} 
+		catch (FileNotFoundException e) 
+		{
+			JOptionPane.showMessageDialog( this, "Error al guardar los datos" );
+		}
+		this.dispose();
+		ventanaL.setVisible(true);
 		
 	}
 }
