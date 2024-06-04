@@ -5,11 +5,15 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import inventario.modelo.Galeria;
+
 public class VentanaAdministrador extends JFrame
 {
 	private JPanel panelS;
 	private JPanel panelC;
 	private JPanel panelI;
+	
+	private Galeria galeria;
 	
 	public VentanaAdministrador() 
 	{
@@ -27,7 +31,12 @@ public class VentanaAdministrador extends JFrame
 		panelC = new PanelCentralAdmin();
 		add(panelC, BorderLayout.CENTER);
 		
-		panelI = new PanelInferiorAdmin();
+		panelI = new PanelInferiorAdmin(this);
 		add(panelI, BorderLayout.SOUTH);
+	}
+	
+	public void cerrarSesion() 
+	{
+		
 	}
 }
